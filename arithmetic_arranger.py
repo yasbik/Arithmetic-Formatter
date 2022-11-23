@@ -1,7 +1,7 @@
 import string
 
 
-def arithmetic_arranger(problems):
+def arithmetic_arranger(problems, solved = False):
 
     arranged_problems = ""
 
@@ -16,6 +16,7 @@ def arithmetic_arranger(problems):
     line1 = ""
     line2 = ""
     line3 = ""
+    line4 = ""
     
     # loop through all the individual problems
     for calculation in problems:
@@ -23,6 +24,7 @@ def arithmetic_arranger(problems):
         num1_list = list()
         num2_list = list()
         dash_list = list()
+        result = 0
 
         # separate each number and operand
         parts = calculation.split(" ")
@@ -30,18 +32,22 @@ def arithmetic_arranger(problems):
         opperand = parts[1].strip()
         num2 = parts[2].strip()
 
-        # opperand has to be an addition or a subtraction
-        # anything else will throw an error and break the loop
-        if not (opperand == '+' or opperand == '-'):  
-            arranged_problems = "Error: Operator must be '+' or '-'."
-            return arranged_problems
-
         # check that the strings only contain numbers
         # anything else will throw an error and break the loop
         if not num1.isnumeric() or not num2.isnumeric():
             arranged_problems = "Error: Numbers must only contain digits."
             return arranged_problems
 
+        # opperand has to be an addition or a subtraction
+        # anything else will throw an error and break the loop
+        if opperand == "+":
+            result = int(num1) + int(num2)
+        elif opperand == "-":
+            result = int(num1) - int(num2)
+        else:
+            arranged_problems = "Error: Operator must be '+' or '-'."
+            return arranged_problems
+        
         # each number can only be four digits long
         # anything else will break the loop
         if len(num1) > 4 or len(num2) > 4:
@@ -84,6 +90,8 @@ def arithmetic_arranger(problems):
             num2_list.insert(0, opperand)
             # num1_list.append("\n")
             # num2_list.append("\n")
+        
+        line4 += str(result).rjust(biglen)
                 
         while biglen > 0:
             dash_list.append("-")
@@ -97,20 +105,14 @@ def arithmetic_arranger(problems):
             line1 += "    "
             line2 += "    "
             line3 += "    "
-
-        # print(arranged_problems[0])
-        # print(arranged_problems[1])
-        # print(arranged_problems[2])
-
-        # arranged_problems[0] += "\n"
-        # arranged_problems[1] += "\n"
-        # arranged_problems[2] += "\n"
+            line4 += "    "
         
-        # print("Calculation =", calculation)
-        # print("Parts = ", parts)
-        # print(string.format("%4d%4d", int(num1), num2))           
-    
-    arranged_problems = line1 + "\n" + line2 + "\n" + line3
+
+         
+    if solved:
+        arranged_problems = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4
+    else:
+        arranged_problems = line1 + "\n" + line2 + "\n" + line3
 
     return arranged_problems
 
