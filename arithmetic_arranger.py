@@ -45,7 +45,7 @@ def arithmetic_arranger(problems):
         # each number can only be four digits long
         # anything else will break the loop
         if len(num1) > 4 or len(num2) > 4:
-            arranged_problems = "Error: Numbers must only contain digits."
+            arranged_problems = "Error: Numbers cannot be more than four digits."
             return arranged_problems
 
         counter = 0
@@ -89,9 +89,14 @@ def arithmetic_arranger(problems):
             dash_list.append("-")
             biglen -= 1
         
-        line1 += ''.join(num1_list) + "\t"
-        line2 += ''.join(num2_list) + "\t"
-        line3 += ''.join(dash_list) + "\t"
+        line1 += ''.join(num1_list)
+        line2 += ''.join(num2_list)
+        line3 += ''.join(dash_list)
+
+        if calculation != problems[-1]:
+            line1 += "    "
+            line2 += "    "
+            line3 += "    "
 
         # print(arranged_problems[0])
         # print(arranged_problems[1])
