@@ -18,4 +18,4 @@ This project formats simple arithmetic calculations to make them easier to visua
     ----    ------    ------    -----
       40     -3800     19998      474
 
-Additional details about the project can be found [here](https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/arithmetic-formatter)
+Additional details about the project can be found [here](https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/arithmetic-formatter).
